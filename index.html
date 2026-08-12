@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>María & Andrés | Invitación de Boda</title>
+    <meta
+      name="description"
+      content="Invitación de boda digital para María y Andrés."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f9f5f1;
+        --ivory: #fffaf6;
+        --rose: #d9a7a0;
+        --rose-strong: #b8746e;
+        --gold: #d7b57c;
+        --text: #3d2f2d;
+        --muted: #6a5a58;
+        --card: rgba(255, 255, 255, 0.7);
+        --shadow: 0 20px 45px rgba(124, 90, 81, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(180deg, #f9f5f1 0%, #f7efe9 50%, #f3e7df 100%);
+        color: var(--text);
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1100px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at top left, rgba(217, 167, 160, 0.22), transparent 30%),
+          radial-gradient(circle at bottom right, rgba(215, 181, 124, 0.18), transparent 32%),
+          linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 420px;
+        height: 420px;
+        border: 1px solid rgba(184, 116, 110, 0.18);
+        border-radius: 50%;
+        filter: blur(1px);
+      }
+
+      .hero::before {
+        left: -120px;
+        top: 80px;
+      }
+
+      .hero::after {
+        right: -120px;
+        bottom: 80px;
+      }
+
+      .hero-card {
+        position: relative;
+        z-index: 1;
+        background: rgba(255, 250, 246, 0.74);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(184, 116, 110, 0.12);
+        box-shadow: var(--shadow);
+        width: min(900px, 92vw);
+        border-radius: 30px;
+        padding: clamp(2rem, 3vw, 3rem);
+        text-align: center;
+      }
+
+      .eyebrow {
+        letter-spacing: 0.28rem;
+        text-transform: uppercase;
+        font-size: 0.74rem;
+        color: var(--muted);
+        margin-bottom: 1rem;
+      }
+
+      h1, h2, h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .names {
+        font-size: clamp(3.2rem, 6vw, 7rem);
+        line-height: 0.9;
+        letter-spacing: 0.05em;
+        font-weight: 600;
+        margin: 0.3rem 0 0.8rem;
+      }
+
+      .ampersand {
+        display: inline-block;
+        font-size: 0.7em;
+        margin: 0 0.2em;
+        color: var(--rose-strong);
+      }
+
+      .subhead {
+        font-size: clamp(1rem, 2vw, 1.4rem);
+        color: var(--muted);
+        letter-spacing: 0.12rem;
+        text-transform: uppercase;
+      }
+
+      .date-pill {
+        margin: 1.6rem auto 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        padding: 0.9rem 1.4rem;
+        border-radius: 999px;
+        background: rgba(184, 116, 110, 0.08);
+        border: 1px solid rgba(184, 116, 110, 0.18);
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .date-pill .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--gold), var(--rose));
+      }
+
+      .cta-row {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        padding: 0.95rem 1.6rem;
+        font-weight: 600;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+      }
+
+      .button.primary {
+        background: linear-gradient(135deg, var(--rose-strong), var(--rose));
+        color: white;
+        box-shadow: 0 14px 28px rgba(184, 116, 110, 0.28);
+      }
+
+      .button.secondary {
+        border: 1px solid rgba(184, 116, 110, 0.25);
+        background: rgba(255,255,255,0.45);
+      }
+
+      .countdown {
+        margin-top: 2.5rem;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(80px, 1fr));
+        gap: 1rem;
+        max-width: 460px;
+        margin-inline: auto;
+      }
+
+      .time-box {
+        background: rgba(255,255,255,0.65);
+        border: 1px solid rgba(184, 116, 110, 0.12);
+        border-radius: 18px;
+        padding: 1rem 0.6rem;
+      }
+
+      .time-value {
+        font-size: clamp(1.6rem, 2vw, 2.3rem);
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 700;
+      }
+
+      .time-label {
+        font-size: 0.7rem;
+        letter-spacing: 0.12rem;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .section {
+        padding: 5rem 0;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+
+      .section-header h2 {
+        font-size: clamp(2.4rem, 4vw, 4rem);
+      }
+
+      .section-header p {
+        max-width: 640px;
+        margin: 0.8rem auto 0;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .story {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .story-card,
+      .info-card {
+        background: rgba(255,255,255,0.55);
+        border: 1px solid rgba(184, 116, 110, 0.12);
+        border-radius: 26px;
+        box-shadow: var(--shadow);
+      }
+
+      .story-card {
+        padding: clamp(1.5rem, 2vw, 2.3rem);
+      }
+
+      .story-card p {
+        color: var(--muted);
+        font-size: 1.04rem;
+        line-height: 1.9;
+        margin: 0;
+      }
+
+      .photo {
+        min-height: 420px;
+        background:
+          linear-gradient(160deg, rgba(217, 167, 160, 0.20), rgba(215, 181, 124, 0.16)),
+          url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+        border-radius: 26px;
+        box-shadow: var(--shadow);
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+
+      .info-card {
+        padding: 1.5rem 1.3rem;
+        text-align: center;
+      }
+
+      .info-card .icon {
+        width: 58px;
+        height: 58px;
+        margin: 0 auto 1rem;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, rgba(184, 116, 110, 0.12), rgba(215, 181, 124, 0.14));
+        font-size: 1.5rem;
+      }
+
+      .info-card h3 {
+        font-size: 2.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .info-card .meta {
+        color: var(--muted);
+        font-weight: 500;
+      }
+
+      .details {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+
+      .detail-card {
+        background: rgba(255,255,255,0.55);
+        border: 1px solid rgba(184, 116, 110, 0.12);
+        border-radius: 26px;
+        padding: 1.7rem;
+        box-shadow: var(--shadow);
+      }
+
+      .detail-card h3 {
+        font-size: 2.4rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .detail-card p,
+      .detail-card li {
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .detail-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0 0;
+      }
+
+      .detail-card li {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .detail-card li::before {
+        content: "✦";
+        color: var(--rose-strong);
+      }
+
+      .rsvp {
+        background: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0));
+      }
+
+      .rsvp-box {
+        max-width: 760px;
+        margin: 0 auto;
+        background: rgba(255, 250, 246, 0.8);
+        border: 1px solid rgba(184, 116, 110, 0.14);
+        border-radius: 30px;
+        box-shadow: var(--shadow);
+        padding: clamp(1.8rem, 3vw, 3rem);
+        text-align: center;
+      }
+
+      .rsvp-box p {
+        max-width: 560px;
+        margin: 0.8rem auto 1.5rem;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .rsvp-actions {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      footer {
+        padding: 2rem 0 4rem;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 800px) {
+        .story,
+        .details,
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .countdown {
+          grid-template-columns: repeat(2, minmax(110px, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero-card container">
+        <div class="eyebrow">Nos casamos</div>
+        <h1 class="names">
+          María<span class="ampersand">&</span>Andrés
+        </h1>
+        <div class="subhead">Te invitamos a celebrar nuestro día</div>
+
+        <div class="date-pill">
+          <span class="dot"></span>
+          <span>14 de septiembre de 2026 · 18:30 hrs</span>
+        </div>
+
+        <div class="cta-row">
+          <a class="button primary" href="#rsvp">Confirmar asistencia</a>
+          <a class="button secondary" href="#detalles">Ver detalles</a>
+        </div>
+
+        <div class="countdown" aria-label="Cuenta regresiva para la boda">
+          <div class="time-box">
+            <div class="time-value" id="days">00</div>
+            <div class="time-label">Días</div>
+          </div>
+          <div class="time-box">
+            <div class="time-value" id="hours">00</div>
+            <div class="time-label">Horas</div>
+          </div>
+          <div class="time-box">
+            <div class="time-value" id="minutes">00</div>
+            <div class="time-label">Min</div>
+          </div>
+          <div class="time-box">
+            <div class="time-value" id="seconds">00</div>
+            <div class="time-label">Seg</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section container">
+        <div class="section-header">
+          <h2>Nuestra historia</h2>
+        </div>
+
+        <div class="story">
+          <div class="story-card">
+            <p>
+              Desde que nos conocimos, todo en nuestras vidas empezó a tener más sentido.
+              Cada paso, cada sueño y cada momento compartido nos ha llevado a este día tan especial:
+              el día en el que prometemos vivir el resto de nuestras historias juntos.
+              <br /><br />
+              Con emoción, alegría y mucho amor, queremos compartir este momento contigo.
+              Tu presencia hará que este día sea aún más hermoso.
+            </p>
+          </div>
+
+          <div class="photo" aria-label="Foto de pareja"></div>
+        </div>
+      </section>
+
+      <section class="section container">
+        <div class="section-header">
+          <h2>Detalles del evento</h2>
+        </div>
+
+        <div class="info-grid">
+          <article class="info-card">
+            <div class="icon">📍</div>
+            <h3>Ubicación</h3>
+            <div class="meta">Jardines del Bosque<br />Ciudad de México</div>
+          </article>
+
+          <article class="info-card">
+            <div class="icon">🕊️</div>
+            <h3>Ceremonia</h3>
+            <div class="meta">18:30 hrs<br />Matrimonio civil</div>
+          </article>
+
+          <article class="info-card">
+            <div class="icon">🎉</div>
+            <h3>Recepción</h3>
+            <div class="meta">20:00 hrs<br />Cena y baile</div>
+          </article>
+        </div>
+      </section>
+
+      <section id="detalles" class="section container">
+        <div class="details">
+          <div class="detail-card">
+            <h3>Agenda</h3>
+            <ul>
+              <li>18:00 · Llegada de invitados</li>
+              <li>18:30 · Ceremonia</li>
+              <li>19:30 · Cóctel</li>
+              <li>20:30 · Cena</li>
+              <li>22:00 · Fiesta y baile</li>
+            </ul>
+          </div>
+
+          <div class="detail-card">
+            <h3>Dress code</h3>
+            <p>
+              Formal elegante. Los tonos claros, pasteles y neutros serán muy bienvenidos.
+              Te recomendamos que te prepares para disfrutar de una velada romántica y llena de música.
+            </p>
+            <p><strong>Nota:</strong> Trae tus mejores sonrisas y ganas de celebrar.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="rsvp" class="section rsvp">
+        <div class="container">
+          <div class="rsvp-box">
+            <div class="eyebrow">Confirmación</div>
+            <h2 style="font-size: clamp(2.6rem, 4vw, 4rem);">¡Esperamos verte!</h2>
+            <p>
+              Por favor, confirma tu asistencia antes del 15 de agosto. Tu presencia hará que este día sea aún más especial para nosotros.
+            </p>
+            <div class="rsvp-actions">
+              <a class="button primary" href="mailto:confirmacion@ejemplo.com?subject=Confirmacion%20de%20asistencia%20-%20Boda%20Mar%C3%ADa%20y%20Andr%C3%A9s">Confirmar</a>
+              <a class="button secondary" href="tel:+521234567890">Contacto</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Con amor, <strong>María & Andrés</strong>
+    </footer>
+
+    <script>
+      const weddingDate = new Date('2026-09-14T18:30:00');
+
+      function updateCountdown() {
+        const now = new Date();
+        const diff = weddingDate - now;
+
+        if (diff <= 0) {
+          document.getElementById('days').textContent = '00';
+          document.getElementById('hours').textContent = '00';
+          document.getElementById('minutes').textContent = '00';
+          document.getElementById('seconds').textContent = '00';
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    </script>
+  </body>
+</html>
